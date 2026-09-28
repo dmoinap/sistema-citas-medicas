@@ -1,0 +1,26 @@
+# Entorno virtual
+ent/
+venv/
+.venv/
+env/
+
+# Variables de entorno / secretos
+.env
+
+# Python
+__pycache__/
+*.py[cod]
+
+# Base de datos y archivos subidos por usuarios
+*.sqlite3
+media/
+
+# Celery beat
+celerybeat-schedule*
+
+# Logs / IDE / SO
+*.log
+.vscode/
+.idea/
+Thumbs.db
+.DS_Store

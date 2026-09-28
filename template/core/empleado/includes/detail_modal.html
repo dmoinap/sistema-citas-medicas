@@ -1,0 +1,32 @@
+<!-- templates/includes/empleado_detail_modal.html -->
+<div class="modal fade" id="empleadoModal" tabindex="-1" aria-labelledby="empleadoModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header bg-primary bg-opacity-75">
+                <h5 class="modal-title text-white fw-bold" id="empleadoModalLabel">
+                    <i class="fas fa-user me-2"></i>Detalles del Empleado
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <!-- Columna para información del empleado -->
+                    <div class="col-md-12">
+                        <p><strong><i class="fas fa-id-badge me-2"></i>ID:</strong> <span id="empleado-id"></span></p>
+                        <p><strong><i class="fas fa-user me-2"></i>Nombre:</strong> <span id="empleado-nombre"></span></p>
+                        <p><strong><i class="fas fa-user-tag me-2"></i>Apellido:</strong> <span id="empleado-apellido"></span></p>
+                        <p><strong><i class="fas fa-id-card me-2"></i>Cédula:</strong> <span id="empleado-cedula"></span></p>
+                        <p><strong><i class="fas fa-briefcase me-2"></i>Cargo:</strong> <span id="empleado-cargo"></span></p>
+                        <p><strong><i class="fas fa-dollar-sign me-2"></i>Sueldo:</strong> <span id="empleado-sueldo"></span></p>
+                        <p><strong><i class="fas fa-check-circle me-2"></i>Activo:</strong> <span id="empleado-activo"></span></p>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                    <i class="fas fa-times me-2"></i>Cerrar
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,43 @@
+{% extends "components/base.html" %}
+{% block css %}
+    <!-- Incluye los estilos de Leaflet -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <style>
+        #map { width: 100%; height: 500px; margin-top: 20px; }
+    </style>
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12 col-lg-12 px-md-4 main-content">
+            <div class="card shadow p-4">
+                <h3 class="text-primary-emphasis fw-bold">Mapa del Doctor: {{ doctor.nombre_completo }}</h3>
+                <div id="map"></div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block js %}
+    <!-- Incluye los scripts de Leaflet -->
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Inicializa el mapa con las coordenadas del paciente
+            var map = L.map('map').setView([{{ latitud }}, {{ longitud }}], 15);
+
+            // Añade la capa de OpenStreetMap
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                maxZoom: 19,
+                attribution: '© OpenStreetMap contributors'
+            }).addTo(map);
+
+            // Añade un marcador en la ubicación del paciente
+            L.marker([{{ latitud }}, {{ longitud }}]).addTo(map)
+                .bindPopup("Paciente: {{ paciente.nombre_completo }}")
+                .openPopup();
+        });
+    </script>
+{% endblock %}

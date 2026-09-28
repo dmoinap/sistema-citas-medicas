@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <h2>Error en el Pago</h2>
+    <div class="alert alert-danger">
+        <p>Ocurrió un error al procesar su pago:</p>
+        <p>{{ errores }}</p>
+    </div>
+    <a href="{% url 'pacientes:lista' %}" class="btn btn-primary">
+        Volver a Pacientes
+    </a>
+</div>
+{% endblock %}

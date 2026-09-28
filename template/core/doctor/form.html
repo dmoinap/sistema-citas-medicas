@@ -1,0 +1,58 @@
+{% extends "components/base.html" %}
+{% load static %}
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/form.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12 col-lg-12 px-md-4 main-content">
+            <!-- mensajes de error del formulario -->
+            {% include 'includes/message_error_form.html' %}
+            <!-- Formulario de doctor -->
+            <form method="post" enctype="multipart/form-data" class="py-4">
+                {% csrf_token %}
+                <div class="card shadow p-4">
+                    <h3 class="text-primary mb-4 fw-bold">{{ title1 }}</h3>
+                    <div class="row g-0">
+                        <!-- Columna de la izquierda -->
+                        <div class="col-lg-4">
+                            <div id="imagenPreview" class="text-center mb-4">
+                                {% if form.foto.value %}
+                                    <img id="imagenSeleccionada" src="{{ form.foto.value.url }}" class="rounded img-fluid" alt="Foto del doctor">
+                                {% else %}
+                                    <img id="imagenSeleccionada" src="{% static 'img/empty.png' %}" class="rounded img-fluid" alt="Foto por defecto">
+                                {% endif %}
+                            </div>
+                            <div class="text-center">
+                                <label for="{{ form.foto.id_for_label }}" class="form-label fw-bold">{{ form.foto.label }}</label>
+                                {{ form.foto }}
+                            </div>
+                        </div>
+
+                        <!-- Columna de la derecha -->
+                        <div class="col-lg-8 px-2">
+                            <div class="row">
+                                {% for field in form %}
+                                    {% if field.name != 'foto' %}
+                                        <div class="col-md-6 mb-3">
+                                            <label for="{{ field.id_for_label }}" class="form-label fw-bold">{{ field.label }}</label>
+                                            {{ field }}
+                                            {{ field.errors }}
+                                        </div>
+                                    {% endif %}
+                                {% endfor %}
+                            </div>
+                            <div class="d-flex justify-content-end mt-4">
+                                <button class="btn btn-outline-success me-2" type="submit">Guardar Doctor</button>
+                                <a class="btn btn-outline-warning" href="{% url 'core:doctor_list' %}">Cancelar</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,84 @@
+{% extends "components/base.html" %}
+{% load static %}
+{% block css %}
+    <link rel="stylesheet" href={% static 'css/form.css' %}>
+{% endblock %}
+
+{% block content %}
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12 col-lg-12 px-md-4 main-content">
+        <!-- mensajes de error del formulario -->
+        {% include 'includes/message_error_form.html' %}
+        <!-- Formulario de Audit User -->
+        <form method="post" enctype="multipart/form-data" class="py-4">
+            {% csrf_token %}
+            <div class="card shadow p-4">
+                <h3 class="text-primary-emphasis mb-4 fw-bold">{{ title1 }}</h3>
+                <div class="row g-3">
+                    <!-- Usuario -->
+                    <div class="col-md-6">
+                        <label for="{{ form.usuario.id_for_label }}" class="form-label fw-bold">{{ form.usuario.label }}</label>
+                        {{ form.usuario }}
+                        {{ form.usuario.errors }}
+                    </div>
+                    
+                    <!-- Tabla -->
+                    <div class="col-md-6">
+                        <label for="{{ form.tabla.id_for_label }}" class="form-label fw-bold">{{ form.tabla.label }}</label>
+                        {{ form.tabla }}
+                        {{ form.tabla.errors }}
+                    </div>
+                </div>
+
+                <div class="row g-3">
+                    <!-- Registro ID -->
+                    <div class="col-md-6">
+                        <label for="{{ form.registroid.id_for_label }}" class="form-label fw-bold">{{ form.registroid.label }}</label>
+                        {{ form.registroid }}
+                        {{ form.registroid.errors }}
+                    </div>
+                    
+                    <!-- Acción -->
+                    <div class="col-md-6">
+                        <label for="{{ form.accion.id_for_label }}" class="form-label fw-bold">{{ form.accion.label }}</label>
+                        {{ form.accion }}
+                        {{ form.accion.errors }}
+                    </div>
+                </div>
+
+                <div class="row g-3">
+                    <!-- Fecha -->
+                    <div class="col-md-6">
+                        <label for="{{ form.fecha.id_for_label }}" class="form-label fw-bold">{{ form.fecha.label }}</label>
+                        {{ form.fecha }}
+                        {{ form.fecha.errors }}
+                    </div>
+                    
+                    <!-- Hora -->
+                    <div class="col-md-6">
+                        <label for="{{ form.hora.id_for_label }}" class="form-label fw-bold">{{ form.hora.label }}</label>
+                        {{ form.hora }}
+                        {{ form.hora.errors }}
+                    </div>
+                </div>
+
+                <div class="row g-3">
+                    <!-- Estación -->
+                    <div class="col-md-6">
+                        <label for="{{ form.estacion.id_for_label }}" class="form-label fw-bold">{{ form.estacion.label }}</label>
+                        {{ form.estacion }}
+                        {{ form.estacion.errors }}
+                    </div>
+                </div>
+
+                <div class="d-flex justify-content-end mt-4">
+                    <button class="btn btn-outline-success me-2" type="submit">Guardar Auditoría</button>
+                    <a class="btn btn-outline-warning" href="{% url 'core:audit_user_list' %}">Cancelar</a>
+                </div>
+            </div>
+        </form>
+      </div>
+    </div>
+  </div>
+{% endblock %}

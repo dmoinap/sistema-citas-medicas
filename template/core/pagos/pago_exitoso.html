@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <h2>Pago Realizado</h2>
+    <div class="alert alert-success">
+        <p>Su pago se ha procesado correctamente.</p>
+        <p>ID de Transacción: {{ payment_id }}</p>
+    </div>
+    <a href="{% url 'pacientes:lista' %}" class="btn btn-primary">
+        Volver a Pacientes
+    </a>
+</div>
+{% endblock %}
